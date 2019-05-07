@@ -34,12 +34,12 @@
   border: 1px solid black;
   background-image: linear-gradient(to right, white, rgba(0, 0, 0, 0.411));
   padding: 10px;
-  transition-duration: 0.75s;
+  transition-duration: 0.5s;
 }
 
 .loginBtn:hover {
   background-color: rgba(0, 0, 0, 0.7);
-  transition-duration: 0.75s;
+  transition-duration: 0.5s;
   color: white;
 }
 
@@ -47,11 +47,11 @@
   border: 1px solid black;
   background-image: linear-gradient(to right, white, rgba(214, 213, 213, 0));
   padding: 10px;
-  transition-duration: 0.75s;
+  transition-duration: 0.5s;
 }
 
 .registerBtn:hover {
   background-color: rgba(0, 0, 0, 0.7);
-  transition-duration: 0.75s;
+  transition-duration: 0.5s;
   color: rgb(255, 255, 255);
 }

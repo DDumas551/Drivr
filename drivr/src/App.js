@@ -15,6 +15,7 @@ function App() {
           <p className="registerBtn text-center">Register</p>
         </div>
       </div>
+      <div className="lol" />
     </div>
   );
 }
