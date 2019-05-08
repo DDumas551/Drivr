@@ -8,14 +8,18 @@ function App() {
       <p className="subHeader text-center">Rideshare Analytics</p>
       <hr className="hr" />
       <div className="row align-items-center btnRow">
-        <div className="col-3 offset-3">
+        <div className="col-4 offset-2">
           <p className="loginBtn text-center">Log In</p>
         </div>
-        <div className="col-3">
+        <div className="col-4">
           <p className="registerBtn text-center">Register</p>
         </div>
       </div>
-      <div className="lol" />
+      <div className="row">
+        <div className="col">
+          <p className="footer text-center">Copyright 2019</p>
+        </div>
+      </div>
     </div>
   );
 }
