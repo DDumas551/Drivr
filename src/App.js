@@ -16,6 +16,11 @@ function App() {
         </div>
       </div>
       <div className="row">
+        <div className="col-8 offset-2">
+          <p className="guestBtn text-center">Continue as guest</p>
+        </div>
+      </div>
+      <div className="row">
         <div className="col">
           <p className="footer text-center">Copyright 2019</p>
         </div>

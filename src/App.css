@@ -56,7 +56,20 @@
   color: rgb(255, 255, 255);
 }
 
+.guestBtn {
+  border: 1px solid black;
+  background-image: linear-gradient(to right, white, rgba(214, 213, 213, 0));
+  padding: 10px;
+  transition-duration: 0.5s;
+}
+
+.guestBtn:hover {
+  background-color: black;
+  transition-duration: 0.5s;
+  color: white;
+}
+
 .footer {
   color: rgb(212, 212, 212);
-  margin-top: 62%;
+  margin-top: 47%;
 }
