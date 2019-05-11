@@ -1,0 +1,22 @@
+@font-face {
+  font-family: drivrFont;
+  src: url("../../../src/goodtimesrg.ttf");
+}
+
+@font-face {
+  font-family: subheader;
+  src: url("../../../src/Cvetanoff.otf");
+}
+
+.App-header {
+  font-size: 80px;
+  font-family: drivrFont;
+}
+
+.subHeader {
+  font-family: subheader;
+}
+
+.hr {
+  max-width: 75vw;
+}
