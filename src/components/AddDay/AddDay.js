@@ -1,4 +1,5 @@
 import React from "react";
+import "../AddDay/AddDay.css";
 import { Link } from "react-router-dom";
 
 const AddDay = () => {
@@ -38,7 +39,7 @@ const AddDay = () => {
             type="number"
             class="form-control"
             id="exampleFormControlInput1"
-            placeholder="Online hours"
+            placeholder="Online hours (XX.YY)"
           />
         </div>
         <div class="form-group">
@@ -49,17 +50,18 @@ const AddDay = () => {
             placeholder="Number of trips"
           />
         </div>
-        <div class="form-group">
-          <input
-            type="number"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Gallons purchased"
-          />
+        <div className="row">
+          <div className="col-6">
+            <Link to="/LoggedIn">
+              <div className="home text-center">&#127968;</div>
+            </Link>
+          </div>
+          <div className="col-6">
+            <Link to="/OverallStats">
+              <div className="submit link">Submit Data</div>
+            </Link>
+          </div>
         </div>
-        <Link to="/LoggedIn">
-          <button className="back">Back</button>
-        </Link>
       </form>
     </div>
   );

@@ -1,0 +1,11 @@
+.buttons {
+  border: 1px solid black;
+  padding: 18px 0px;
+  margin: 10px 0px;
+  color: black;
+}
+
+.logout {
+  color: black;
+  padding-top: 10px;
+}

@@ -23,7 +23,6 @@ const Register = () => {
             type="text"
             class="form-control"
             id="exampleFormControlInput1"
-            placeholder="Username"
           />
         </div>
         <div class="form-group">
@@ -43,10 +42,18 @@ const Register = () => {
           />
         </div>
       </form>
-      <BackBtn />
-      <Link to="/">
-        <div className="btn btn-success">Submit</div>
-      </Link>
+      <div className="row">
+        <div className="col-6">
+          <Link to="/">
+            <div className="text-center regButtons">Back</div>
+          </Link>
+        </div>
+        <div className="col-6">
+          <Link to="/LoginPage">
+            <div className="regButtons text-center">Submit</div>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

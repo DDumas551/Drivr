@@ -1,45 +1,43 @@
 import React from "react";
+import "../AddGas/AddGas.css";
 import { Link } from "react-router-dom";
-import "./LoginPage.css";
 import BackBtn from "../BackBtn/BackBtn";
 
-const LoginPage = () => {
+const AddGas = () => {
   return (
-    <>
-      <div className="placeholder">Welcome Back!</div>
+    <div>
       <form>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Username</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             id="exampleFormControlInput1"
+            placeholder="Gallons pumped"
           />
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Password</label>
           <input
-            type="password"
+            type="number"
             class="form-control"
             id="exampleFormControlInput1"
+            placeholder="Price/gal"
           />
         </div>
       </form>
-      <br />
       <div className="row">
         <div className="col-6">
-          <Link to="/">
-            <div className="login text-center">Back</div>
+          <Link to="/LoggedIn">
+            <div className="text-center home">&#127968;</div>
           </Link>
         </div>
         <div className="col-6">
-          <Link to="/LoggedIn">
-            <div className="text-center login loginBtn">Login</div>
+          <Link to="/OverallStats">
+            <div className="addGas text-center">Submit Gas</div>
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default LoginPage;
+export default AddGas;

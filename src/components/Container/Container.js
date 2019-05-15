@@ -7,7 +7,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Guest from "../Guest/Guest";
 import Register from "../Register/Register";
 import LoggedIn from "../LoggedIn/LoggedIn";
+import Averages from "../Averages/Averages";
 import AddDay from "../AddDay/AddDay";
+import AddGas from "../AddGas/AddGas";
+import TopDays from "../TopDays/TopDays";
+import OverallStats from "../OverallStats/OverallStats";
 import "./Container.css";
 
 const Container = () => {
@@ -23,6 +27,10 @@ const Container = () => {
             <Route exact path="/Guest" component={Guest} />
             <Route exact path="/LoggedIn" component={LoggedIn} />
             <Route exact path="/AddDay" component={AddDay} />
+            <Route exact path="/AddGas" component={AddGas} />
+            <Route exact path="/Averages" component={Averages} />
+            <Route exact path="/TopDays" component={TopDays} />
+            <Route exact path="/OverallStats" component={OverallStats} />
           </Switch>
         </Router>
 
