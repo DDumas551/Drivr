@@ -1,12 +1,13 @@
-.submit {
-  /* border: 1px solid black; */
-}
-
 .link {
   color: black;
   border: 1px solid black;
   text-align: center;
   padding: 10px 0px;
+}
+
+.subBtn {
+  background: none;
+  padding: 12px 30px;
 }
 
 .home {
