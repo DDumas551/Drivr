@@ -1,4 +1,6 @@
 .footer {
   color: rgb(212, 212, 212);
   top: 125px;
+  position: relative;
+  bottom: -50px;
 }

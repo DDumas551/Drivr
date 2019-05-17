@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
 import LoginButtons from "../LoginButtons/LoginButtons";
-// import Footer from "../Footer/Footer";
+import Footer from "../Footer/Footer";
 import LoginPage from "../LoginPage/LoginPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Guest from "../Guest/Guest";
@@ -33,8 +33,7 @@ const Container = () => {
             <Route exact path="/OverallStats" component={OverallStats} />
           </Switch>
         </Router>
-
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   );

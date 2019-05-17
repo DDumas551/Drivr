@@ -52,6 +52,15 @@ app.post("/api/addDay", function(req, res) {
   );
 });
 
+app.get("/api/overallStats", function(req, res) {
+  connection.query("SELECT * FROM days", function(err, result) {
+    console.log("error", err);
+    console.log("Result", res.json);
+    console.log("Result", result);
+    return res.send(result);
+  });
+});
+
 // Routes
 // =============================================================
 // require("./app/routes/api-routes.js")(app);
