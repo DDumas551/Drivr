@@ -9,11 +9,12 @@ class Search extends Component {
     sort: "Best",
     timeFrame: "day",
     oTimeFrame: "Day",
-    moneyEarned: "" || 0,
-    trips: "" || 0,
-    onlineHours: "" || 0,
-    averageMoney: "" || 0,
-    cashEarned: "" || 0
+    moneyEarned: 0,
+    trips: 0,
+    onlineHours: 0,
+    averageMoney: 0,
+    cashEarned: 0,
+    data: []
   };
 
   componentDidMount() {
@@ -28,14 +29,17 @@ class Search extends Component {
       })
       .then(res => {
         console.log(res);
+        const max = res.reduce(function(prev, current) {
+          return (prev.moneyEarned > current.moneyEarned) ? prev : current
+      })
+        console.log('bestday', max);
         this.setState({
-          cashEarned: Math.max.apply(
-            Math,
-            res.map(function(o) {
-              return o.moneyEarned;
-            })
-          )
+          cashEarned: max.moneyEarned,
+          onlineHours: max.onlineHours,
+          trips: max.trips,
+          data: res
         });
+        
 
         // this.setState({
         //   milesDriven: res.reduce(
@@ -61,8 +65,24 @@ class Search extends Component {
   colors = ["grey", "white"];
 
   handleClick = (sort, timeFrame) => {
+              // cashEarned: Math.max.apply(
+          //   Math,
+          //   res.map(function(o) {
+          //     return o.moneyEarned;
+          //   })
+          // )
+          const bestDay = this.state.data.reduce(function(prev, current) {
+            return (prev.moneyEarned > current.moneyEarned) ? prev : current
+        })
+          const worstDay = this.state.data.reduce(function(prev, current) {
+            return (prev.moneyEarned < current.moneyEarned) ? prev : current
+        })
+        const dataToDisplay = (sort === "Best") ? bestDay : worstDay;
     this.setState({
       sort,
+      cashEarned: dataToDisplay.moneyEarned,
+      trips: dataToDisplay.trips,
+      onlineHours: dataToDisplay.onlineHours,
       timeFrame
     });
   };
@@ -99,7 +119,7 @@ class Search extends Component {
                 <div>Trips per {z.timeFrame}:</div>
               </div>
               <div className="col-6 offset-1">
-                <div># OF TRIPS</div>
+                <div>{this.state.trips}</div>
               </div>
             </div>
             <div className="row">
@@ -107,7 +127,7 @@ class Search extends Component {
                 <div>Hours/{z.timeFrame}:</div>
               </div>
               <div className="col-6 offset-1">
-                <div>AVG HOURS</div>
+                <div>{this.state.onlineHours}</div>
               </div>
             </div>
             <div className="row">
@@ -115,7 +135,7 @@ class Search extends Component {
                 <div>Avg $/trip:</div>
               </div>
               <div className="col-6 offset-1">
-                <div>${z.averageMoney}</div>
+                <div>${(z.cashEarned / z.trips).toFixed(2)}</div>
               </div>
             </div>
           </div>
