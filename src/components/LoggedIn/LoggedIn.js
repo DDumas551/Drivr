@@ -33,11 +33,11 @@ const LoggedIn = () => {
             <div className="addDay text-center buttons">Add day</div>
           </Link>
         </div>
-        <div className="col-6">
+        {/* <div className="col-6">
           <Link to="/AddGas">
-            <div className="text-center buttons">Add Gas</div>
+            <div className={`text-center buttons`}>Add Gas</div>
           </Link>
-        </div>
+        </div> */}
       </div>
       <div className="row">
         <div className="col-6 offset-6">

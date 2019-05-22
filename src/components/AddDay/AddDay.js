@@ -55,7 +55,7 @@ class AddDay extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
               <input
                 type="number"
                 className="form-control"
@@ -65,7 +65,7 @@ class AddDay extends Component {
                 value={this.state.milesDriven}
                 onChange={this.handleChange}
               />
-            </div>
+            </div> */}
             <div className="form-group">
               <input
                 type="number"
@@ -73,7 +73,7 @@ class AddDay extends Component {
                 id="exampleFormControlInput1"
                 placeholder="Money earned"
                 name="moneyEarned"
-                value={this.state.moneyEarned}
+                value={parseFloat(this.state.moneyEarned)}
                 onChange={this.handleChange}
               />
             </div>
@@ -106,7 +106,18 @@ class AddDay extends Component {
                 </Link>
               </div>
               <div className="col-6">
-                <button className="subBtn link" onClick={this.handleSubmit}>
+                <button
+                  className="subBtn link"
+                  disabled={
+                    !this.state.date ||
+                    !this.state.moneyEarned ||
+                    !this.state.onlineHours ||
+                    !this.state.trips
+                      ? true
+                      : false
+                  }
+                  onClick={this.handleSubmit}
+                >
                   Submit Data
                 </button>
               </div>

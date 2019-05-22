@@ -33,7 +33,7 @@ const Container = () => {
             <Route exact path="/OverallStats" component={OverallStats} />
           </Switch>
         </Router>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

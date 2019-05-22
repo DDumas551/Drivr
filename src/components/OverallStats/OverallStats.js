@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 class OverallStats extends Component {
   state = {
     date: "",
-    milesDriven: "",
     moneyEarned: "",
     onlineHours: "",
     trips: ""
@@ -33,11 +32,11 @@ class OverallStats extends Component {
             0
           ),
           moneyEarned: res.reduce(
-            (a, b) => parseInt(a) + parseInt(b.moneyEarned),
+            (a, b) => parseFloat(a) + parseFloat(b.moneyEarned),
             0
           ),
           onlineHours: res.reduce(
-            (a, b) => parseInt(a) + parseInt(b.onlineHours),
+            (a, b) => parseFloat(a) + parseFloat(b.onlineHours),
             0
           ),
           trips: res.reduce((a, b) => parseInt(a) + parseInt(b.trips), 0)
@@ -53,18 +52,10 @@ class OverallStats extends Component {
       <div>
         <div className="row">
           <div className="col-6 text-center">
-            <p>Total Miles Driven</p>
-          </div>
-          <div className="col-6 text-center">
-            <p>{this.state.milesDriven || 0}</p>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-6 text-center">
             <p>Total Cash Earned</p>
           </div>
           <div className="col-6 text-center">
-            <p>${this.state.moneyEarned || 0}</p>
+            <p>${(this.state.moneyEarned * 1).toFixed(2) || 0}</p>
           </div>
         </div>
         <div className="row">
@@ -80,13 +71,50 @@ class OverallStats extends Component {
             <p>Total Online Hours</p>
           </div>
           <div className="col-6 text-center">
-            <p>{this.state.onlineHours || 0}</p>
+            <p>{(this.state.onlineHours * 1).toFixed(2) || 0}</p>
           </div>
         </div>
         <hr className="hr" />
         <div className="row">
           <div className="col-6 text-center">
+            <p>OA $/hour</p>
+          </div>
+          <div className="col-6 text-center">
+            <p>
+              $
+              {(this.state.moneyEarned / this.state.onlineHours).toFixed(2) ||
+                0}
+            </p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-6 text-center">
             <p>OA $/trip</p>
+          </div>
+          <div className="col-6 text-center">
+            <p>
+              ${(this.state.moneyEarned / this.state.trips).toFixed(2) || 0}
+            </p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-6 text-center">
+            <p>OA trips/hr</p>
+          </div>
+          <div className="col-6 text-center">
+            <p>{(this.state.trips / this.state.onlineHours).toFixed(2) || 0}</p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-6 text-center">
+            <p>OA Trips Away from 90</p>
+          </div>
+          <div className="col-6 text-center">
+            <p>
+              {(90 - (this.state.trips / this.state.onlineHours) * 32).toFixed(
+                2
+              ) || 0}
+            </p>
           </div>
         </div>
         <div className="row">
@@ -95,9 +123,9 @@ class OverallStats extends Component {
               <p className="text-center homeButton">&#127968;</p>
             </Link>
           </div>
-          <div className="col-6">
+          {/* <div className="col-6">
             <button>CLICKY</button>
-          </div>
+          </div> */}
         </div>
       </div>
     );

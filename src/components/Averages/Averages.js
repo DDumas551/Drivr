@@ -1,13 +1,62 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import OverallStats from "../OverallStats/OverallStats";
 import "./Averages.css";
 
 class Search extends Component {
   state = {
     activeButton: "grey",
-    sort: "best",
-    timeFrame: "day"
+    sort: "Best",
+    timeFrame: "day",
+    oTimeFrame: "Day",
+    moneyEarned: "" || 0,
+    trips: "" || 0,
+    onlineHours: "" || 0,
+    averageMoney: "" || 0,
+    cashEarned: "" || 0
   };
+
+  componentDidMount() {
+    fetch("/api/overallStats", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(res => {
+        console.log(res);
+        this.setState({
+          cashEarned: Math.max.apply(
+            Math,
+            res.map(function(o) {
+              return o.moneyEarned;
+            })
+          )
+        });
+
+        // this.setState({
+        //   milesDriven: res.reduce(
+        //     (a, b) => parseInt(a) + parseInt(b.milesDriven),
+        //     0
+        //   ),
+        //   moneyEarned: res.reduce(
+        //     (a, b) => parseFloat(a) + parseFloat(b.moneyEarned),
+        //     0
+        //   ),
+        //   onlineHours: res.reduce(
+        //     (a, b) => parseFloat(a) + parseFloat(b.onlineHours),
+        //     0
+        //   ),
+        //   trips: res.reduce((a, b) => parseInt(a) + parseInt(b.trips), 0)
+        // });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   colors = ["grey", "white"];
 
@@ -19,40 +68,54 @@ class Search extends Component {
   };
 
   render() {
+    // let bestCashDay = res[0].moneyEarned;
+    // let bestHoursDay = res[0].onlineHours;
+    // let bestDay = bestCashDay / bestHoursDay;
+
+    // for (let i = 0; i < res.length; i++) {
+    //   if (res[i].moneyEarned > bestCashDay) {
+    //     bestCashDay = res[i.moneyEarned];
+    //   }
+    // }
+
+    const z = this.state;
+
     return (
       <div>
         <div className="row dataRow">
           <div className="col-12">
             <div className="row">
               <div className="col-5 text-right">
-                <div>Cash earned:</div>
+                <div>
+                  {z.sort} {z.timeFrame}:
+                </div>
               </div>
               <div className="col-6 offset-1">
-                <div>$$$$</div>
+                <div>${z.cashEarned}</div>
               </div>
             </div>
             <div className="row">
               <div className="col-5 text-right">
-                <div>Miles driven:</div>
+                <div>Trips per {z.timeFrame}:</div>
               </div>
               <div className="col-6 offset-1">
-                <div>121 Miles</div>
+                <div># OF TRIPS</div>
               </div>
             </div>
             <div className="row">
               <div className="col-5 text-right">
-                <div>$/mile:</div>
+                <div>Hours/{z.timeFrame}:</div>
               </div>
               <div className="col-6 offset-1">
-                <div>$1.05/mile</div>
+                <div>AVG HOURS</div>
               </div>
             </div>
             <div className="row">
               <div className="col-5 text-right">
-                <div>$/trip:</div>
+                <div>Avg $/trip:</div>
               </div>
               <div className="col-6 offset-1">
-                <div>10.95/trip</div>
+                <div>${z.averageMoney}</div>
               </div>
             </div>
           </div>
@@ -62,44 +125,6 @@ class Search extends Component {
           <div className="col">
             <div className="row">
               <div className="col">
-                <p className="text-center">Averages by:</p>
-              </div>
-            </div>
-            <div className="row justify-content-around">
-              <div className="col-4">
-                <p
-                  className={`searchBtn3 ${
-                    this.state.timeFrame === "day" ? "grey" : "white"
-                  }`}
-                  onClick={() => this.handleClick(this.state.sort, "day")}
-                >
-                  Day
-                </p>
-              </div>
-              <div className="col-4">
-                <p
-                  className={`searchBtn3 ${
-                    this.state.timeFrame === "week" ? "grey" : "white"
-                  }`}
-                  onClick={() => this.handleClick(this.state.sort, "week")}
-                >
-                  Week
-                </p>
-              </div>
-              <div className="col-4">
-                <p
-                  className={`searchBtn3 ${
-                    this.state.timeFrame === "month" ? "grey" : "white"
-                  }`}
-                  onClick={() => this.handleClick(this.state.sort, "month")}
-                >
-                  Month
-                </p>
-              </div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col">
                 <p className="text-center">Sort by:</p>
               </div>
             </div>
@@ -107,9 +132,9 @@ class Search extends Component {
               <div className="col-6">
                 <p
                   className={`searchBtn2 ${
-                    this.state.sort === "best" ? "grey" : "white"
+                    z.sort === "Best" ? "grey" : "white"
                   }`}
-                  onClick={() => this.handleClick("best", this.state.timeFrame)}
+                  onClick={() => this.handleClick("Best", z.timeFrame)}
                 >
                   Best
                 </p>
@@ -117,16 +142,47 @@ class Search extends Component {
               <div className="col-6">
                 <p
                   className={`searchBtn2 ${
-                    this.state.sort === "worst" ? "grey" : "white"
+                    z.sort === "Worst" ? "grey" : "white"
                   }`}
-                  onClick={() =>
-                    this.handleClick("worst", this.state.timeFrame)
-                  }
+                  onClick={() => this.handleClick("Worst", z.timeFrame)}
                 >
                   Worst
                 </p>
               </div>
             </div>
+            <div className="row justify-content-around">
+              <div className="col-4">
+                <p
+                  className={`searchBtn3 ${
+                    z.timeFrame === "day" ? "grey" : "white"
+                  }`}
+                  onClick={() => this.handleClick(z.sort, "day")}
+                >
+                  1 Day
+                </p>
+              </div>
+              <div className="col-4">
+                <p
+                  className={`searchBtn3 ${
+                    z.timeFrame === "week" ? "grey" : "white"
+                  }`}
+                  onClick={() => this.handleClick(z.sort, "week")}
+                >
+                  7 Days
+                </p>
+              </div>
+              <div className="col-4">
+                <p
+                  className={`searchBtn3 ${
+                    z.timeFrame === "month" ? "grey" : "white"
+                  }`}
+                  onClick={() => this.handleClick(z.sort, "month")}
+                >
+                  30 Days
+                </p>
+              </div>
+            </div>
+            <hr />
           </div>
         </div>
         <div className="row">

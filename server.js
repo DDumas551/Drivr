@@ -31,14 +31,8 @@ connection.connect(function(err) {
 
 app.post("/api/addDay", function(req, res) {
   connection.query(
-    "INSERT INTO days (dayWorked, milesDriven, moneyEarned, onlineHours, trips) VALUES (?, ?, ?, ?, ?)",
-    [
-      req.body.date,
-      req.body.milesDriven,
-      req.body.moneyEarned,
-      req.body.onlineHours,
-      req.body.trips
-    ],
+    "INSERT INTO days (dayWorked, moneyEarned, onlineHours, trips) VALUES (?, ?, ?, ?)",
+    [req.body.date, req.body.moneyEarned, req.body.onlineHours, req.body.trips],
     function(err, result) {
       if (err) {
         // If an error occurred, send a generic server failure
