@@ -6,12 +6,14 @@ import { Redirect } from "react-router-dom";
 class AddDay extends Component {
   state = {
     date: "",
+    dayOtW: "",
     milesDriven: "",
     moneyEarned: "",
     onlineHours: "",
     trips: "",
     dataEntered: false
   };
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -44,8 +46,36 @@ class AddDay extends Component {
       return (
         <div>
           <form>
+            <div>
+              Today is:
+              <br />
+            </div>
             <div className="form-group">
-              <label for="exampleFormControlSelect1">Today is:</label>
+              <select onChange={this.handleChange} name="daysOtW">
+                <option value={this.state.dayOtW} onChange={this.handleChange}>
+                  Monday
+                </option>
+                <option value={this.state.dayOtW} onChange={this.handleChange}>
+                  Tuesday
+                </option>
+                <option value={this.state.dayOtW} onChange={this.handleChange}>
+                  Wednesday
+                </option>
+                <option value={this.state.dayOtW} onChange={this.handleChange}>
+                  Thursday
+                </option>
+                <option value={this.state.dayOtW} onChange={this.handleChange}>
+                  Friday
+                </option>
+                <option value={this.state.dayOtW} onChange={this.handleChange}>
+                  Saturday
+                </option>
+                <option value={this.state.dayOtW} onChange={this.handleChange}>
+                  Sunday
+                </option>
+              </select>
+            </div>
+            <div className="form-group">
               <input
                 type="date"
                 className="form-control"
@@ -55,17 +85,6 @@ class AddDay extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            {/* <div className="form-group">
-              <input
-                type="number"
-                className="form-control"
-                id="exampleFormControlInput1"
-                placeholder="Miles driven"
-                name="milesDriven"
-                value={this.state.milesDriven}
-                onChange={this.handleChange}
-              />
-            </div> */}
             <div className="form-group">
               <input
                 type="number"

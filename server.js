@@ -31,8 +31,14 @@ connection.connect(function(err) {
 
 app.post("/api/addDay", function(req, res) {
   connection.query(
-    "INSERT INTO days (dayWorked, moneyEarned, onlineHours, trips) VALUES (?, ?, ?, ?)",
-    [req.body.date, req.body.moneyEarned, req.body.onlineHours, req.body.trips],
+    "INSERT INTO days (dayWorked, dayOtW, moneyEarned, onlineHours, trips) VALUES (?, ?, ?, ?, ?)",
+    [
+      req.body.date,
+      req.body.dayOtW,
+      req.body.moneyEarned,
+      req.body.onlineHours,
+      req.body.trips
+    ],
     function(err, result) {
       if (err) {
         // If an error occurred, send a generic server failure
@@ -53,6 +59,14 @@ app.get("/api/overallStats", function(req, res) {
     console.log("Result", result);
     return res.send(result);
   });
+});
+
+app.get("/api/topDays", function(req, res) {
+  const query = connection.query({
+    sql: "SELECT * FROM days WHERE ? IN (?)",
+    values: ["dayOtW", ["Monday", "Tuesday"]]
+  });
+  console.log("query", query.sql);
 });
 
 // Routes

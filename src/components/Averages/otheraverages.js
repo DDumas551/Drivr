@@ -110,20 +110,12 @@ class Search extends Component {
                 </div>
               </div>
               <div className="col-6 offset-1">
-                <div>${z.cashEarned} total</div>
+                <div>${z.cashEarned}</div>
               </div>
             </div>
             <div className="row">
               <div className="col-5 text-right">
-                <div>$/hour:</div>
-              </div>
-              <div className="col-6 offset-1">
-                <div>${(z.cashEarned / z.onlineHours).toFixed(2)}/hour</div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-5 text-right">
-                <div>Trips that {z.timeFrame}:</div>
+                <div>Trips per {z.timeFrame}:</div>
               </div>
               <div className="col-6 offset-1">
                 <div>{this.state.trips}</div>

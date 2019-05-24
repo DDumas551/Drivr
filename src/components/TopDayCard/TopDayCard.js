@@ -9,10 +9,10 @@ const TopDayCard = () => {
           <h5 className="card-title text-center">Day</h5>
           <div className="row">
             <div className="col">
-              <p className="card-text">Dollars/mile</p>
+              <p className="card-text">$/hour</p>
             </div>
             <div className="col">
-              <p className="card-text">Other Text</p>
+              <p className="card-text">Avg trips/Day</p>
             </div>
           </div>
         </div>

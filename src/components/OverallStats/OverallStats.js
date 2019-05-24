@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 class OverallStats extends Component {
   state = {
     date: "",
+    dayOtW: "",
     moneyEarned: "",
     onlineHours: "",
     trips: ""
@@ -27,10 +28,6 @@ class OverallStats extends Component {
       .then(res => {
         console.log(res);
         this.setState({
-          milesDriven: res.reduce(
-            (a, b) => parseInt(a) + parseInt(b.milesDriven),
-            0
-          ),
           moneyEarned: res.reduce(
             (a, b) => parseFloat(a) + parseFloat(b.moneyEarned),
             0

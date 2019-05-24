@@ -7,19 +7,19 @@ const LoginPage = () => {
     <>
       <div className="placeholder">Welcome Back!</div>
       <form>
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Username</label>
+        <div className="form-group">
+          <label>Username</label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="exampleFormControlInput1"
           />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="exampleFormControlInput1">Password</label>
           <input
             type="password"
-            class="form-control"
+            className="form-control"
             id="exampleFormControlInput1"
           />
         </div>
