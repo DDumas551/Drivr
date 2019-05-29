@@ -61,13 +61,13 @@ app.get("/api/overallStats", function(req, res) {
   });
 });
 
-app.get("/api/topDays", function(req, res) {
-  const query = connection.query({
-    sql: "SELECT * FROM days WHERE ? IN (?)",
-    values: ["dayOtW", ["Monday", "Tuesday"]]
-  });
-  console.log("query", query.sql);
-});
+// app.get("/api/topDays", function(req, res) {
+//   const query = connection.query({
+//     sql: "SELECT * FROM days WHERE ? IN (?)",
+//     values: ["dayOtW", ["Monday", "Tuesday"]]
+//   });
+//   console.log("query", query.sql);
+// });
 
 // Routes
 // =============================================================
