@@ -7,13 +7,13 @@ class TopDayCard extends Component {
       <>
         <div className="card">
           <div className="card-body">
-            <h5 className="card-title text-center">{this.props.dayOtW}</h5>
+            <h5 className="card-title text-center">{this.props.day}</h5>
             <div className="row">
               <div className="col">
-                <p className="card-text">$/hour</p>
+                <p className="card-text">${this.props.rate}/hour</p>
               </div>
               <div className="col">
-                <p className="card-text">Avg trips/Day</p>
+                <p className="card-text">{this.props.avgTrips} Trips/Day</p>
               </div>
             </div>
           </div>

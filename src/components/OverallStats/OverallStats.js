@@ -10,11 +10,6 @@ class OverallStats extends Component {
     onlineHours: "",
     trips: ""
   };
-
-  // handleData = e => {
-  //   console.log("comon u piece of hshit");
-  // };
-
   componentDidMount() {
     fetch("/api/overallStats", {
       method: "get",

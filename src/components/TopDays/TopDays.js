@@ -2,22 +2,41 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TopDayCard from "../TopDayCard/TopDayCard";
 import "../TopDays/TopDays.css";
+const daysOfWeek = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday"
+];
 
 class TopDays extends Component {
   state = {
     data: [],
     hours: {},
     moneyEarned: {},
-    monday: [],
+    monday: 0,
     mondayCash: 0,
     mondayHours: 0,
-    tuesday: [],
-    wednesday: [],
-    thursday: [],
-    friday: [],
-    saturday: [],
-    sunday: []
+    tuesday: 0,
+    wednesday: 0,
+    thursday: 0,
+    friday: 0,
+    saturday: 0,
+    sunday: 0,
+    tripsPerDay: {
+      monday: 0,
+      tuesday: 0,
+      wednesday: 0,
+      thursday: 0,
+      friday: 0,
+      saturday: 0,
+      sunday: 0
+    }
   };
+
   componentDidMount() {
     fetch("/api/overallStats", {
       method: "get",
@@ -29,9 +48,12 @@ class TopDays extends Component {
         return response.json();
       })
       .then(res => {
-        this.setState({
-          data: res
-        });
+        this.setState(
+          {
+            data: res
+          },
+          this.calculateTotals(res)
+        );
       })
       .then()
       .catch(err => {
@@ -39,42 +61,56 @@ class TopDays extends Component {
       });
   }
 
-  render() {
-    for (let i = 0; i < this.state.data.length; i++) {
-      if (this.state.data[i].dayOtW === "Monday") {
-        this.state.monday.push(this.state.data[i]);
-      } else if (this.state.data[i].dayOtW === "Tuesday") {
-        this.state.tuesday.push(this.state.data[i]);
-      } else if (this.state.data[i].dayOtW === "Wednesday") {
-        this.state.wednesday.push(this.state.data[i]);
-      } else if (this.state.data[i].dayOtW === "Thursday") {
-        this.state.thursday.push(this.state.data[i]);
-      } else if (this.state.data[i].dayOtW === "Friday") {
-        this.state.friday.push(this.state.data[i]);
-      } else if (this.state.data[i].dayOtW === "Saturday") {
-        this.state.saturday.push(this.state.data[i]);
-      } else if (this.state.data[i].dayOtW === "Sunday") {
-        this.state.sunday.push(this.state.data[i]);
-      }
-    }
+  calculateTotals = res => {
+    daysOfWeek.forEach(element => {
+      const moneyEarned = res
+        .filter(day => {
+          return day.dayOtW.toLowerCase() === element.toLowerCase();
+        })
+        .reduce((tally, day) => {
+          return (tally += day.moneyEarned);
+        }, 0)
+        .toFixed(2);
+      const hoursOnline = res
+        .filter(day => {
+          return day.dayOtW.toLowerCase() === element.toLowerCase();
+        })
+        .reduce((tally, day) => {
+          return (tally += day.onlineHours);
+        }, 0)
+        .toFixed(2);
+      const totalTrips = res
+        .filter(day => {
+          return day.dayOtW.toLowerCase() === element.toLowerCase();
+        })
+        .reduce((tally, day) => {
+          return (tally += day.trips);
+        }, 0);
+      const totalDays = res.filter(day => {
+        return day.dayOtW.toLowerCase() === element.toLowerCase();
+      });
+      console.log("total days", totalDays);
+      this.setState({
+        [element.toLowerCase()]: (moneyEarned / hoursOnline).toFixed(2),
+        tripsPerDay: {
+          ...this.state.tripsPerDay,
+          [element.toLowerCase()]: (totalTrips / totalDays.length).toFixed(2)
+        }
+      });
+    });
+  };
 
+  render() {
     return (
       <div>
-        <div className="card">
-          <div className="card-body">
-            <h5 className="card-title text-center">LOL</h5>
-            <div className="row">
-              <div className="col">
-                <p className="card-text">$/hour</p>
-              </div>
-              <div className="col">
-                <p className="card-text">Avg trips/Day</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br />
-        {/* <TopDayCard /> */}
+        {daysOfWeek.map(day => (
+          <TopDayCard
+            key={day}
+            day={day.toUpperCase()}
+            rate={this.state[day]}
+            avgTrips={this.state.tripsPerDay[day]}
+          />
+        ))}
         <div className="row">
           <div className="col-6">
             <Link to="/LoggedIn">

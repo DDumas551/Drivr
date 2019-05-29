@@ -30,6 +30,7 @@ connection.connect(function(err) {
 });
 
 app.post("/api/addDay", function(req, res) {
+  console.log("Req.body", req.body);
   connection.query(
     "INSERT INTO days (dayWorked, dayOtW, moneyEarned, onlineHours, trips) VALUES (?, ?, ?, ?, ?)",
     [

@@ -188,7 +188,7 @@ class Search extends Component {
                   1 Day
                 </p>
               </div>
-              <div className="col-4">
+              {/* <div className="col-4">
                 <p
                   className={`searchBtn3 ${
                     z.timeFrame === "week" ? "grey" : "white"
@@ -207,7 +207,7 @@ class Search extends Component {
                 >
                   30 Days
                 </p>
-              </div>
+              </div> */}
             </div>
             <hr />
           </div>
