@@ -7,3 +7,18 @@
   font-family: subheader;
   src: url("./Cvetanoff.otf");
 }
+
+@font-face {
+  font-family: regText;
+  src: url("./fonts/Acme-Regular.ttf");
+}
+
+.regText {
+  font-family: regText;
+  font-size: 15px;
+}
+
+.regText2 {
+  font-family: regText;
+  font-size: 21px;
+}

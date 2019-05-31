@@ -1,5 +1,5 @@
 .btnRow {
-  margin-top: 50%;
+  margin-top: 23vh;
 }
 
 .loginBtn {
@@ -7,6 +7,7 @@
   background-image: linear-gradient(to right, white, rgba(0, 0, 0, 0.411));
   padding: 10px;
   transition-duration: 0.5s;
+  text-decoration: none !important;
 }
 
 .loginBtn:hover {

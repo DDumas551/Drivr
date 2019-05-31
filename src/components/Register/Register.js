@@ -18,7 +18,9 @@ class Register extends Component {
       <div>
         <form>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Email address</label>
+            <label className="regText" for="exampleFormControlInput1">
+              Email address
+            </label>
             <input
               type="email"
               class="form-control"
@@ -27,7 +29,9 @@ class Register extends Component {
             />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Username</label>
+            <label className="regText" for="exampleFormControlInput1">
+              Username
+            </label>
             <input
               type="text"
               class="form-control"
@@ -35,7 +39,9 @@ class Register extends Component {
             />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Create Password</label>
+            <label className="regText" for="exampleFormControlInput1">
+              Create Password
+            </label>
             <input
               type="password"
               class="form-control"
@@ -43,7 +49,9 @@ class Register extends Component {
             />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Re-enter Password</label>
+            <label className="regText" for="exampleFormControlInput1">
+              Re-enter Password
+            </label>
             <input
               type="password"
               class="form-control"
@@ -54,12 +62,12 @@ class Register extends Component {
         <div className="row">
           <div className="col-6">
             <Link to="/">
-              <div className="text-center regButtons">Back</div>
+              <div className="regText text-center regButtons">Back</div>
             </Link>
           </div>
           <div className="col-6">
             <Link to="/LoginPage">
-              <div className="regButtons text-center">Submit</div>
+              <div className="regText regButtons text-center">Submit</div>
             </Link>
           </div>
         </div>

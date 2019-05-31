@@ -117,7 +117,7 @@ class TopDays extends Component {
               <div className="text-center home">&#127968;</div>
             </Link>
           </div>
-          <button className="btn btn-large" onClick={this.handleClick}>
+          <button className="regText btn btn-large" onClick={this.handleClick}>
             TEST LAUNCH
           </button>
         </div>

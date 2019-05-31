@@ -5,10 +5,10 @@ import "./LoginPage.css";
 const LoginPage = () => {
   return (
     <>
-      <div className="placeholder">Welcome Back!</div>
+      <div className="regText2 placeholder">Welcome Back!</div>
       <form>
         <div className="form-group">
-          <label>Username</label>
+          <label className="regText">Username</label>
           <input
             type="text"
             className="form-control"
@@ -16,7 +16,9 @@ const LoginPage = () => {
           />
         </div>
         <div className="form-group">
-          <label for="exampleFormControlInput1">Password</label>
+          <label className="regText" for="exampleFormControlInput1">
+            Password
+          </label>
           <input
             type="password"
             className="form-control"
@@ -28,12 +30,12 @@ const LoginPage = () => {
       <div className="row">
         <div className="col-6">
           <Link to="/">
-            <div className="login text-center">Back</div>
+            <div className="regText login text-center">Back</div>
           </Link>
         </div>
         <div className="col-6">
           <Link to="/LoggedIn">
-            <div className="text-center login loginBtn">Login</div>
+            <div className="regText text-center login loginBtn">Login</div>
           </Link>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import OverallStats from "../OverallStats/OverallStats";
 import "./Averages.css";
 
 class Search extends Component {

@@ -43,35 +43,35 @@ class OverallStats extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>Total Cash Earned</p>
           </div>
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>${(this.state.moneyEarned * 1).toFixed(2) || 0}</p>
           </div>
         </div>
         <div className="row">
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>Total Rides Given</p>
           </div>
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>{this.state.trips || 0}</p>
           </div>
         </div>
         <div className="row">
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>Total Online Hours</p>
           </div>
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>{(this.state.onlineHours * 1).toFixed(2) || 0}</p>
           </div>
         </div>
         <hr className="hr" />
         <div className="row">
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>OA $/hour</p>
           </div>
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>
               $
               {(this.state.moneyEarned / this.state.onlineHours).toFixed(2) ||
@@ -80,28 +80,28 @@ class OverallStats extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>OA $/trip</p>
           </div>
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>
               ${(this.state.moneyEarned / this.state.trips).toFixed(2) || 0}
             </p>
           </div>
         </div>
         <div className="row">
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>OA trips/hr</p>
           </div>
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>{(this.state.trips / this.state.onlineHours).toFixed(2) || 0}</p>
           </div>
         </div>
         <div className="row">
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>OA Trips Away from 90</p>
           </div>
-          <div className="col-6 text-center">
+          <div className="regText col-6 text-center">
             <p>
               {(90 - (this.state.trips / this.state.onlineHours) * 32).toFixed(
                 2
