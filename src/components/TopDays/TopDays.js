@@ -89,7 +89,7 @@ class TopDays extends Component {
       const totalDays = res.filter(day => {
         return day.dayOtW.toLowerCase() === element.toLowerCase();
       });
-      console.log("total days", totalDays);
+      // console.log("total days", totalDays);
       this.setState({
         [element.toLowerCase()]: (moneyEarned / hoursOnline).toFixed(2),
         tripsPerDay: {
@@ -100,6 +100,20 @@ class TopDays extends Component {
     });
   };
 
+  // bubbleSort = daysOfWeek => {
+  //   let len = daysOfWeek.length;
+  //   for (let i = len - 1; i >= 0; i--) {
+  //     for (let j = 1; j <= i; j++) {
+  //       if (daysOfWeek[j - 1] > daysOfWeek[j]) {
+  //         let temp = daysOfWeek[j - 1];
+  //         daysOfWeek[j - 1] = daysOfWeek[j];
+  //         daysOfWeek[j] = temp;
+  //       }
+  //     }
+  //   }
+  //   console.log("Sorted?!?! ", daysOfWeek);
+  //   return daysOfWeek;
+  // };
   render() {
     return (
       <div>
@@ -117,7 +131,7 @@ class TopDays extends Component {
               <div className="text-center home">&#127968;</div>
             </Link>
           </div>
-          <button className="regText btn btn-large" onClick={this.handleClick}>
+          <button className="regText btn btn-large" onClick={this.bubbleSort}>
             TEST LAUNCH
           </button>
         </div>
